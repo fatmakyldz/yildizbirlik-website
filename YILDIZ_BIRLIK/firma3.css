@@ -1,0 +1,1820 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); /* Google Fonts'tan Poppins fontunu içe aktarır */
+
+/* Genel stil ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Tüm elemanlar için sınır ve içeriği birlikte hesaplar */
+    font-family: 'Poppins', sans-serif; /* Tüm elemanlar için yazı tipi olarak Poppins kullanır */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Tam ekran yüksekliğini sağlar */
+    width: 100%; /* Tam ekran genişliğini sağlar */
+}
+
+a {
+    text-decoration: none; /* Linklerin altını çizmez */
+}
+
+body {
+    min-height: 100vh; /* Minimum yüksekliği tam ekran yapar */
+    background-color: #f1f1f1; /* Arka plan rengini beyaz yapar */
+    display: flex;
+    flex-direction: column; /* Elemanları dikeyde sıralar */
+}
+.seo-hidden {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+.content {
+    flex: 1 0 auto; /* İçeriğin esnek olmasını sağlar */
+}
+/* header ve navbar  */
+header {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    justify-content: space-between; /* İçindeki elemanları yatayda aralarına boşluk koyarak hizalar */
+    padding: 10px 7%; /* İçine boşluk ekler */
+    background-color: rgba(198, 164, 164, 0); /* Arka planı şeffaf yapar */
+    position: fixed; /* Sayfa kaydırıldığında sabit kalır */
+    width: 100%; /* Genişliği tam ekran yapar */
+    height: 100px; /* Sabit yükseklik belirler */
+    top: 0; /* Üstten boşluk bırakmaz */
+    left: 0; /* Soldan boşluk bırakmaz */
+    z-index: 1000; /* Üst üste binen elemanların sıralamasında öne çıkarır */
+    color: white; /* Yazı rengini beyaz yapar */
+}
+
+header.scrolled {
+    background-color: #585353a0; /* Kaydırıldığında arka plan rengini değiştirir */
+}
+
+#companyLogo {
+    width: 100px; /* Sabit genişlik belirler */
+    height: 75px; /* Sabit yükseklik belirler */
+    background-color: transparent; /* Arka plan rengini şeffaf yapar */
+}
+
+#companyLogo img {
+    max-height: 160px; /* Maksimum yükseklik belirler */
+    width: auto; /* Genişliği otomatik ayarlar */
+    display: block; /* Blok seviyesinde görüntüler */
+    margin-left: auto; /* Sola yaslar */
+    margin-right: auto; /* Sağa yaslar */
+    margin-top: -30px;
+}
+
+header .navbar {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-grow: 1; /* Genişliği olabildiğince genişler */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    justify-content: space-between; /* İçindeki elemanları yatayda aralarına boşluk koyarak hizalar */
+}
+
+header .navbar ul {
+    display: flex; /* Liste elemanlarını esnek kutu modeli ile düzenler */
+    align-items: center; /* Liste elemanlarını dikeyde ortalar */
+    margin: 0; /* Dış boşlukları sıfırlar */
+    padding: 0; /* İç boşlukları sıfırlar */
+    flex-grow: 1; /* Liste elemanlarının genişliğini genişletir */
+    margin-left: auto; /* Liste elemanlarını sola yaslar */
+    justify-content: flex-end; /* Liste elemanlarını sağa hizalar */
+    list-style-type: none; /* Liste işaretlerini kaldırır */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    margin-top: 10px;
+}
+
+header .navbar ul li {
+    position: relative; /* Konumlandırma için relative kullanır */
+    margin-left: 2px; /* Sol boşluk ekler */
+    margin-right: 2px; /* Sağ boşluk ekler */
+}
+
+header .navbar ul li a {
+    font-size: 15px; /* Yazı boyutunu ayarlar */
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    display: block; /* Blok seviyesinde görüntüler */
+    padding: 23px 20px; /* İç boşluk ekler */
+    transition: 0.5s color ease; /* Renk değişimi için geçiş ekler */
+    position: relative; /* Konumlandırma için relative kullanır */
+    font-weight: 300; /* Yazı kalınlığını ayarlar */
+    margin-top: 18px; /* Üst boşluk ekler */
+}
+
+header .navbar ul li a:hover {
+    transition: 0.4s; /* Hover durumunda geçiş süresi */
+    color: #c50303; /* Hover durumunda yazı rengini kırmızı yapar */
+}
+
+header .navbar ul li a::before{
+    content: none; /* Önceki içerik için boşluk bırakır */
+}
+
+header .navbar ul li a:after {
+    content: ' '; /* Sonra içerik için boşluk bırakır */
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    background-color: #c50303; /* Arka plan rengini kırmızı yapar */
+    height: 4px; /* Sabit yükseklik belirler */
+    width: 0%; /* Genişliği sıfırlar */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    right: 0; /* Sağa yaslar */
+    bottom: 0; /* Alta yaslar */
+    transition: 0.4s; /* Geçiş süresi */
+}
+
+header .navbar ul li a:hover:after {
+    width: 98%; /* Hover durumunda genişliği artırır */
+}
+
+/* Arama butonu ve Dil Seçici Alanı */
+.search-language {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    justify-content: flex-end; /* İçindeki elemanları sağa hizalar */
+    flex-grow: 1; /* Genişliği olabildiğince genişletir */
+    padding-right: 5px; /* Sağ tarafa boşluk ekler */
+    margin-left: 2px; /* Sol tarafa boşluk ekler */
+    
+}
+
+.search-icon {
+    color: #c50303; /* Yazı rengini beyaz yapar */
+    font-size: 20px; /* Yazı boyutunu ayarlar */
+    margin-right: 25px; /* Sağ tarafa boşluk ekler */
+    margin-left: 2px; /* Sol tarafa boşluk ekler */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    margin-top: 15px;
+}
+
+.language-select {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    margin-left: 1px; /* Sol tarafa boşluk ekler */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    margin-top: 10px;
+}
+
+.language-select .flag-icon {
+    font-size: 24px; /* Yazı boyutunu ayarlar */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    margin-right: 10px; /* Sağ tarafa boşluk ekler */
+    transition: transform 0.2s; /* Geçiş süresi ekler */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    margin-top: 15px;
+}
+
+.language-select .flag-icon:last-child {
+    margin-right: 0; /* Son elemanın sağ tarafına boşluk eklemez */
+}
+
+.language-select .flag-icon:hover {
+    transform: scale(1.2); /* Hover durumunda ölçeği artırır */
+}
+
+/* Modal için CSS */
+.modal {
+    display: none; /* Görünürlüğü kapatır */
+    position: fixed; /* Sabit konumlandırma kullanır */
+    z-index: 1001; /* Z-indeks sıralamasında öne çıkarır */
+    left: 0; /* Soldan boşluk bırakmaz */
+    top: 0; /* Üstten boşluk bırakmaz */
+    width: 100%; /* Genişliği tam ekran yapar */
+    height: 100%; /* Yüksekliği tam ekran yapar */
+    overflow: auto; /* Taşma durumunda kaydırma çubuğu ekler */
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı şeffaf arka plan rengi ekler */
+    padding-top: 60px; /* Üstten boşluk ekler */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Arka plan rengini beyaz yapar */
+    margin: 5% auto; /* Ortalanmış şekilde margin ekler */
+    padding: 20px; /* İç boşluk ekler */
+    border: 1px solid #888; /* Sınır ekler */
+    width: 100%; /* Genişliği tam yapar */
+    max-width: 500px; /* Maksimum genişliği belirler */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    text-align: center; /* Metni ortalar */
+}
+
+.close {
+    color: #aaa; /* Yazı rengini açık gri yapar */
+    float: right; /* Sağa yaslar */
+    font-size: 28px; /* Yazı boyutunu ayarlar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Hover veya odak durumunda yazı rengini siyah yapar */
+    text-decoration: none; /* Altı çizili özelliği kaldırır */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+}
+
+#searchInput {
+    width: 100%; /* Genişliği tam yapar */
+    padding: 10px; /* İç boşluk ekler */
+    margin: 10px 0; /* Üst ve alt boşluk ekler */
+    border: 1px solid #ccc; /* Sınır ekler */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+}
+
+.modal-logo {
+    height: 100px; /* Sabit yükseklik belirler */
+    margin-top: -50px;
+    margin-bottom: -50px;
+}
+
+.modal button {
+    padding: 10px 20px; /* İç boşluk ekler */
+    background-color: #8fc537; /* Arka plan rengini kırmızı yapar */
+    color: white; /* Yazı rengini beyaz yapar */
+    border: none; /* Sınır eklemez */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    transition: background-color 0.3s; /* Arka plan rengi için geçiş süresi ekler */
+}
+
+.modal button:hover {
+    background-color: #c50303; /* Hover durumunda arka plan rengini koyulaştırır */
+}
+
+.highlight {
+    background-color: #8fc537;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* tam ekran video  */
+.video-container {
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    height: 100vh; /* Yüksekliği tam ekran yapar */
+    margin-top: 0; /* Üstten boşluk bırakmaz */
+    object-fit: cover;
+}
+
+video {
+    width: 100%; /* Genişliği tam yapar */
+    height: 100%; /* Yüksekliği tam yapar */
+    object-fit: cover; /* Video içeriğini kapsayacak şekilde boyutlandırır */
+}
+/* ayraç */
+.separator {
+    width: 100%; /* Genişliği tam yapar */
+    height: 50px; /* Sabit yükseklik belirler */
+    background: linear-gradient(90deg, rgba(255,0,0,0) 0%,#c50303 50%, rgba(255,0,0,0) 100%); /* Doğrusal gradyan arka plan */
+    margin: 50px 0; /* Üst ve alt boşluk ekler */
+    position: relative; /* Konumlandırma için relative kullanır */
+    animation: slideIn 1s ease-out forwards; /* Kaydırma animasyonu */
+}
+.separator1 {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(90deg, rgba(255,0,0,0) 0%, #c50303 50%, rgba(255,0,0,0) 100%);
+    margin-top: -7px !important;
+    margin: 50px 0;
+    position: relative;
+    animation: slideIn 1s ease-out forwards;
+}
+@keyframes separatorSlideIn {
+    from {
+        transform: translateY(50px); /* Y ekseninde kaydırma */
+        opacity: 0; /* Saydamlık başlangıç değeri */
+    }
+    to {
+        transform: translateY(0); /* Y ekseninde kaydırma */
+        opacity: 1; /* Saydamlık bitiş değeri */
+    }
+}
+
+/* Ne Yapıyoruz Bölümü */
+.what-we-do {
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-color: #f1f1f1; /* Arka plan rengini açık gri yapar */
+    text-align: center; /* Metni ortalar */
+}
+
+.what-we-do h2 {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-bottom: 40px; /* Alt boşluk ekler */
+    opacity: 1; /* Başlangıçta görünür */
+    transition: opacity 1s ease-out; /* Saydamlık geçişi */
+}
+
+.what-we-do.scrolled h2 {
+    animation: slideIn 1s ease-out forwards; /* Kaydırma animasyonu */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px); /* Y ekseninde kaydırma */
+        opacity: 0; /* Saydamlık başlangıç değeri */
+    }
+    to {
+        transform: translateY(0); /* Y ekseninde kaydırma */
+        opacity: 1; /* Saydamlık bitiş değeri */
+    }
+}
+
+.what-we-do-container {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    justify-content: space-between; /* İçindeki elemanları yatayda aralarına boşluk koyarak hizalar */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    max-width: 1600px; /* Maksimum genişlik belirler */
+    margin: 0 auto; /* Ortalar */
+    text-align: left; /* Metni sola yaslar */
+}
+
+.what-we-do-slideshow,
+.what-we-do-text {
+    flex: 1; /* İçindeki elemanların esnek olmasını sağlar */
+    padding: 20px; /* İç boşluk ekler */
+}
+
+.what-we-do-slideshow {
+    max-width: 50%; /* Maksimum genişlik belirler */
+}
+
+.what-we-do-text {
+    max-width: 50%; /* Maksimum genişlik belirler */
+}
+
+.what-we-do-text .text-container {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-wrap: wrap; /* İçeriği sarar */
+    flex-direction: column; /* İçeriği yatayda aralarına boşluk koyarak hizalar */
+}
+
+.what-we-do-text .text-item {
+    flex: 1 1 45%; /* Esnek ve sabit genişlik ayarı */
+    background: #fff; /* Arka plan rengini beyaz yapar */
+    padding: 20px; /* İç boşluk ekler */
+    margin: 10px; /* Dış boşluk ekler */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Gölge efekti ekler */
+    text-align: center; /* Metni ortalar */
+}
+
+.what-we-do-text .text-item h3 {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    font-size: 29px; /* Yazı boyutunu ayarlar */
+}
+
+.what-we-do-text .text-item p {
+    margin-top: 10px; /* Üst boşluk ekler */
+    font-size: 20px; /* Yazı boyutunu ayarlar */
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    overflow: hidden; /* Taşma durumunda içeriği gizler */
+}
+
+.mySlides {
+    width: 100%; /* Genişliği tam yapar */
+    height: auto; /* Yüksekliği otomatik ayarlar */
+}
+
+.mySlides img {
+    margin-left: 90px;
+    width: 75%; /* Genişliği tam yapar */
+    height: auto; /* Yüksekliği otomatik ayarlar */
+    object-fit: cover; /* İçeriği kapsayacak şekilde boyutlandırır */
+    animation: fade 2s ease-in-out forwards; /* Geçiş animasyonu */
+}
+
+@keyframes fade {
+    from {opacity: 0.4} /* Saydamlık başlangıç değeri */
+    to {opacity: 1} /* Saydamlık bitiş değeri */
+}
+.fade{
+    opacity: 1 !important ;
+}
+.prev, .next {
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    width: auto; /* Genişliği otomatik ayarlar */
+    padding: 16px; /* İç boşluk ekler */
+    margin-top: -22px; /* Üstten margin ekleyerek ortalar */
+    color: white; /* Yazı rengini beyaz yapar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    font-size: 18px; /* Yazı boyutunu ayarlar */
+    transition: 0.6s ease; /* Geçiş süresi ekler */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+    user-select: none; /* Kullanıcı seçimini kapatır */
+    background-color: rgba(84, 83, 83, 0.143); /* Arka plan rengini yarı şeffaf yapar */
+}
+
+.next {
+    right: 10px; /* Sağdan boşluk bırakır */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+}
+
+.prev {
+    left: 10px; /* Soldan boşluk bırakır */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(75, 75, 75, 0.702); /* Hover durumunda arka plan rengini koyulaştırır */
+}
+/* biz kimiz kısmı  */
+.who-we-are {
+    padding: 20px 0; /* Üst ve alt boşluk ekler */
+    background-color: #f1f1f1; /* Arka plan rengini açık gri yapar */
+    text-align: center; /* Metni ortalar */
+}
+
+.who-we-are h2 {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    margin-top: 10px; /* Üst boşluk ekler */
+}
+
+.about-us-container {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-direction: column; /* İçindeki elemanları dikeyde hizalar */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    justify-content: center; /* İçindeki elemanları yatayda ortalar */
+    gap: 1px; /* Elemanlar arasındaki boşluğu artırır */
+    
+}
+
+.about-us-item {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-wrap: wrap; /* İçeriği sarar */
+    justify-content: space-between; /* İçeriği yatayda aralarına boşluk koyarak hizalar */
+    align-items: center; /* İçeriği dikeyde ortalar */
+    width: 70%; /* Genişliği %50 yapar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+}
+
+.about-us-item.reverse {
+    flex-direction: row-reverse; /* İçeriği ters sırada hizalar */
+}
+
+.about-us-text {
+    flex: 1; /* Esnek genişlik ayarı */
+    max-width: 70%; /* Maksimum genişlik belirler */
+    padding: 10px; /* İç boşluk ekler */
+    text-align: left; /* Metni sola yaslar */
+    margin-right: 20px;
+}
+.about-us-item.reverse .about-us-text {
+    margin-right: 0;
+    margin-left: 20px;
+}
+.about-us-text h3 {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+}
+
+.about-us-text p {
+    margin-bottom: 10px; /* Alt boşluk ekler */
+}
+
+.about-us-image {
+    flex: 1; /* Esnek genişlik ayarı */
+    max-width: 70%; /* Maksimum genişlik belirler */
+    padding: 10px; /* İç boşluk ekler */
+    margin-left: 20px;
+}
+.about-us-item.reverse .about-us-image {
+    margin-left: 0;
+    margin-right: 20px;
+}
+.about-us-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* İçeriği kapsayacak şekilde boyutlandırır */
+    border-radius: 10px; /* Kenarları yuvarlatır */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölge efekti ekler */
+}
+
+/* Makine Parkuru Bölümü (anasayfa)*/
+.machine-park {
+    width: 100%; /* Genişliği tam yapar */
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-color: #f1f1f1; /* Arka plan rengini açık gri yapar */
+    text-align: center; /* Metni ortalar */
+}
+
+.machine-park h2 {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-bottom: 40px; /* Alt boşluk ekler */
+}
+
+.machine-slideshow-container {
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 80%; /* Maksimum genişlik belirler */
+    margin: auto; /* Ortalar */
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-direction: row; /* İçindeki elemanları dikeyde sıralar */
+    align-items: center; /* İçindeki elemanları ortalar */
+    justify-content: center; /* İçindeki elemanları ortalar */
+  
+}
+
+.machine-slide {
+    display: none; /* Görünürlüğü kapatır */
+    width: 100%; /* Genişliği tam yapar */
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-direction: row; /* İçindeki elemanları dikeyde sıralar */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    justify-content: space-between; /* İçindeki elemanları yatayda ortalar */
+    gap: 20px; /* Elemanlar arasındaki boşluğu artırır */
+}
+
+.slide-image {
+    width: 100%; /* Genişliği  yapar */
+    height: auto; /* Yüksekliği otomatik ayarlar */
+    max-height: 600px;
+    object-fit: cover; /* İçeriği kapsayacak şekilde boyutlandırır */
+    margin-bottom: 20px; /* Alt boşluk ekler */
+    border-radius: 10px; /* Kenarları yuvarlatır */
+}
+
+
+.machine-prev, .machine-next {
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%;
+    width: 40px; /* Sabit genişlik */
+    height: 60px; /* Sabit yükseklik */
+    padding: 16px; /* İç boşluk ekler */
+    color: white; /* Yazı rengini beyaz yapar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    font-size: 18px; /* Yazı boyutunu ayarlar */
+    transition: 0.6s ease; /* Geçiş süresi ekler */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+    user-select: none; /* Kullanıcı seçimini kapatır */
+    background-color: rgba(84, 83, 83, 0.143); /* Arka plan rengini yarı şeffaf yapar */
+    transform: translateY(-50%); /* Dikeyde ortalar */
+    z-index: 1; /* Z-indeks sıralamasında öne çıkarır */
+}
+
+
+.machine-next {
+    right: 0; /* Sağdan boşluk bırakır */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+}
+
+
+.machine-prev {
+    left: 0; /* Sağdan boşluk bırakır */
+    border-radius: 3px; /* Kenarları yuvarlatır */
+}
+
+.machine-prev:hover, .machine-next:hover {
+    background-color: rgba(75,75,75,0.702); /* Hover durumunda arka plan rengini koyulaştırır */
+}
+
+.fade-machine {
+    animation-name: fadeMachine; /* Animasyon ismini belirler */
+    animation-duration: 1.5s; /* Animasyon süresini belirler */
+}
+
+@keyframes fadeMachine {
+    from {opacity: .4} /* Saydamlık başlangıç değeri */
+    to {opacity: 1} /* Saydamlık bitiş değeri */
+}
+/* Ürünler sayfası için stiller  */
+.img-products-navbar{
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    min-height: 300px; /* Minimum yükseklik belirler */
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-image: url('img/gri.webp'); /* Arka plan resmi ekler */
+    background-size: cover; /* Arka plan resmini kapsayacak şekilde boyutlandırır */
+    background-position: center; /* Arka plan resmini ortalar */
+    filter: grayscale(100%); /* Tamamen siyah-beyaz yapar */
+}
+
+.img-products-navbar h4 {
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    left: 50%; /* Soldan %50 boşluk bırakır */
+    transform: translate(-50%, -50%); /* Konumlandırmayı tam ortalar */
+    color: rgb(255, 255, 255); /* Yazı rengini koyu gri yapar */
+    font-size: 48px; /* Yazı boyutunu ayarlar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Metin gölgesi ekler */
+}
+
+.product-page {
+    display: flex; /* Yan yana düzenlemek için flex kullanılır */
+    align-items: center; /* İçerikleri dikeyde ortalar */
+    gap: 20px; /* Resim ve yazı arasında boşluk bırakır */
+    padding: 20px; /* Sayfanın kenar boşluklarını ayarlar */
+}
+
+.urunler {
+    display: block;
+    padding: 20px;
+}
+
+.urun-kart {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.urun-kart:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.urun-kart h2 {
+    font-size: 2em;
+    margin: 15px 0;
+    color: #c50303;
+}
+
+.urun-kart .urun-fotograflar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.urun-kart img {
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.urun-kart img:hover {
+    transform: scale(1.05);
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.modal-content {
+    width: 96%;
+    height: auto;
+    padding: 2%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+}
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+/* iletişim sayfasına özel stiller */
+.iletisim-page main {
+    padding: 20px; /* İç boşluk ekler */
+    background-color: #fff; /* Arka plan rengini beyaz yapar */
+}
+
+.contact-section {
+    margin-top: 120px !important; /* Üstten boşluk ekler */
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    justify-content: space-between; /* İçindeki elemanları yatayda aralarına boşluk koyarak hizalar */
+    align-items: flex-start; /* İçindeki elemanları üstten hizalar */
+    padding: 50px; /* İç boşluk ekler */
+    background-color: #fff; /* Arka plan rengini beyaz yapar */
+    border-radius: 10px; /* Kenarları yuvarlatır */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Gölge efekti ekler */
+    max-width: 1500px; /* Genişliğini 1500px ile sınırlar */
+    margin: 0 auto; /* Ortalamak için margin ayarları */
+    margin-bottom: 15px; /* Alt boşluk ekler */
+}
+
+.contact-container, .contact-info {
+    flex: 1 1 45%; /* Esnek genişlik ayarı */
+    margin: 10px; /* Dış boşluk ekler */
+}
+
+.contact-container {
+    max-width: 600px; /* Formun genişliğini sınırla */
+    margin-right: 60px; /* Sağ tarafa boşluk ekler */
+}
+
+.contact-container h1, .contact-info h2 {
+    margin-bottom: 20px; /* Alt boşluk ekler */
+    font-size: 40px; /* Yazı boyutunu ayarlar */
+    color: #333; /* Yazı rengini koyu gri yapar */
+}
+
+.contact-container p1, .contact-info p1 {
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    color: #666; /* Yazı rengini gri yapar */
+}
+
+.contact-container .form-row {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    justify-content: space-between; /* İçindeki elemanları yatayda aralarına boşluk koyarak hizalar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+    width: 100%; /* Genişliği tam yapar */
+}
+
+.contact-container .form-row input, .contact-container .form-row textarea {
+    width: 48%; /* Genişliği yüzde 48 yapar */
+    padding: 10px; /* İç boşluk ekler */
+    border: 1px solid #ccc; /* Gri sınır ekler */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    font-size: 16px; /* Yazı boyutunu ayarlar */
+}
+
+.contact-container .form-row textarea {
+    width: 100%; /* Genişliği tam yapar */
+    height: 120px; /* Sabit yükseklik belirler */
+}
+
+.contact-container button {
+    padding: 10px 20px; /* İç boşluk ekler */
+    width: 600px; /* Sabit genişlik belirler */
+    background-color: #8fc537; /* Arka plan rengini kırmızı yapar */
+    color: #fff; /* Yazı rengini beyaz yapar */
+    border: none; /* Kenarlık eklemez */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    font-size: 16px; /* Yazı boyutunu ayarlar */
+    transition: background-color 0.3s; /* Arka plan rengi için geçiş süresi ekler */
+}
+
+.contact-container button:hover {
+    background-color: #ff6403; /* Hover durumunda arka plan rengini koyulaştırır */
+}
+
+.social-icons a {
+    margin-right: 10px; /* Sağ tarafa boşluk ekler */
+}
+
+.social-icons a i {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    font-size: 24px; /* Yazı boyutunu ayarlar */
+}
+
+.map-container {
+    padding: 50px; /* İç boşluk ekler */
+    background-color: #fff; /* Arka plan rengini beyaz yapar */
+    text-align: center; /* Metni ortalar */
+    max-width: 1500px; /* Maksimum genişlik belirler */
+    margin: 0 auto; /* Ortalar */
+    margin-bottom: 15px; /* Alt boşluk ekler */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Gölge efekti ekler */
+}
+
+.map-container h2 {
+    margin-bottom: 20px; /* Alt boşluk ekler */
+    font-size: 40px; /* Yazı boyutunu ayarlar */
+    color: #333; /* Yazı rengini koyu gri yapar */
+}
+
+.map-container iframe {
+    width: 100%; /* Genişliği tam yapar */
+    border: 0; /* Kenarlık eklemez */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+}
+/* galeri için stil düzenlemeleri  */
+.gallery-fullscreen-container {
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    min-height: 300px; /* Minimum yükseklik belirler */
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-image: url('img/gri.webp'); /* Arka plan resmi ekler */
+    background-size: cover; /* Arka plan resmini kapsayacak şekilde boyutlandırır */
+    background-position: center; /* Arka plan resmini ortalar */
+    filter: grayscale(100%); /* Tamamen siyah-beyaz yapar */
+}
+.gallery-fullscreen-container h1 {
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    left: 50%; /* Soldan %50 boşluk bırakır */
+    transform: translate(-50%, -50%); /* Konumlandırmayı tam ortalar */
+    color: rgb(255, 255, 255); /* Yazı rengini koyu gri yapar */
+    font-size: 48px; /* Yazı boyutunu ayarlar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Metin gölgesi ekler */
+}
+
+.nav-tabs {
+    margin-top: -40px !important; /* Sekme üstündeki boşluğu kaldırır */
+    border-bottom: 1px solid #afafaf; /* Sekmelerin altında ince bir çizgi ekler */
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent; /* Düğmelerin kenarlıklarını başlangıçta görünmez yapar */
+    border-radius: .25rem; /* Düğmelerin köşelerini hafifçe yuvarlatır */
+    color: #ff0000; /* Düğme metninin rengini kırmızı yapar */
+    background-color: #f1f1f1; /* Düğmelerin arka plan rengini açık gri yapar */
+    transition: all 0.3s ease; /* Tüm değişiklikler için 0.3 saniyelik geçiş efekti ekler */
+    padding: 10px 20px; /* Düğmelerin içine 10px yukarı-aşağı ve 20px sağa-sola boşluk ekler */
+    margin: 0 5px; /* Düğmeler arasına 5px yatay boşluk ekler */
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link.active {
+    background-color: #333; /* Hover durumunda veya aktif sekmede düğmelerin arka plan rengini koyu gri yapar */
+    color: #f1f1f1; /* Hover durumunda veya aktif sekmede düğme metninin rengini açık gri yapar */
+    border-color: #333 #333 #fff; /* Düğmenin kenar rengini üst ve alt kenarlarda koyu gri, sağ ve sol kenarlarda beyaz yapar */
+}
+
+
+.gallery-row {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-wrap: wrap; /* İçeriği sarar ve alt satıra geçmesini sağlar */
+   
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.333% - 20px); /* Her bir galeri öğesi için genişliği 33.333% yapar ve 20px boşluk bırakır */
+    margin: 10px; /* Her bir öğe etrafında 10px boşluk bırakır */
+}
+
+.gallery-image {
+    width: 100%; /* Görselin genişliğini eleman genişliği ile sınırlar */
+    max-width: 500px;
+    height: auto; /* Yüksekliği otomatik ayarlar, en-boy oranını korur */
+    border-radius: 5px; /* Görselin köşelerini 5px yuvarlatır */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif bir gölge efekti ekler */
+    transition: transform 0.2s; /* Görüntü ölçeklendirmesi için 0.2 saniyelik geçiş efekti ekler */
+}
+
+.gallery-image:hover {
+    transform: scale(1.05); /* Hover durumunda görseli %5 büyütür */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Hover durumunda gölgeyi artırarak daha belirgin yapar */
+}
+
+
+.haber-card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.haber-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.haber-card a {
+    max-width: 450px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.haber-image {
+    position: relative;
+}
+
+.haber-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.haber-content {
+    padding: 15px;
+}
+
+.haber-tarih {
+    font-size: 14px;
+    color: #757575;
+    margin-bottom: 8px;
+}
+
+.haber-tarih i {
+    margin-right: 5px;
+}
+
+.haber-content h3 {
+    font-size: 18px;
+    color: #000000;
+    margin: 0;
+}
+/* Galeri Modalı */
+.modal-gallery {
+    display: none; /* Görünürlüğü kapatır */
+    position: fixed; /* Sabit konumlandırma kullanır */
+    z-index: 1000; /* Z-indeks sıralamasında öne çıkarır */
+    left: 0; /* Soldan boşluk bırakmaz */
+    top: 0; /* Üstten boşluk bırakmaz */
+    width: 100%; /* Genişliği tam yapar */
+    height: 100%; /* Yüksekliği tam yapar */
+    overflow: hidden; /* Taşma durumunda kaydırma çubuğu ekler */
+    background-color: rgba(0, 0, 0, 0.8); /* Yarı şeffaf arka plan rengi ekler */
+}
+
+.modal-gallery-content {
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    left: 50%; /* Soldan %50 boşluk bırakır */
+    transform: translate(-50%, -50%); /* Konumlandırmayı tam ortalar */
+    width: 90%; /* Genişliği %90 yapar */
+    max-width: 700px; /* Maksimum genişliği belirler */
+    background-color: #f1f1f1; /* Arka plan rengini açık gri yapar */
+    padding: 2px; /* İç boşluk ekler */
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+    overflow: hidden;
+}
+.modal-gallery-content img {
+    width: 100%; /* Genişliği tam yapar */
+    height: auto; /* Yüksekliği otomatik ayarlar */
+    max-height: 600px;
+    border-radius: 10px; /* Köşeleri yuvarlatır */
+}
+
+.gallery-prev, .gallery-next {
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    width: auto; /* Genişliği otomatik ayarlar */
+    padding: 16px; /* İç boşluk ekler */
+    margin-top: -50px; /* Üstten -50px kaydırır */
+    color: white; /* Yazı rengini beyaz yapar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    font-size: 20px; /* Yazı boyutunu ayarlar */
+    transition: 0.6s ease; /* Geçiş süresi ekler */
+    border-radius: 3px; /* Köşeleri yuvarlatır */
+    user-select: none; /* Kullanıcı seçimini kapatır */
+}
+
+.gallery-next {
+    right: 0; /* Sağa yaslar */
+}
+
+.gallery-prev{
+    left: 0; /* Sola yaslar */
+}
+
+.gallery-prev:hover, .gallery-next:hover {
+    background-color: rgba(0,0,0,0.8); /* Hover durumunda arka plan rengini koyulaştırır */
+}
+
+/* Fuar sayfası container */
+.fuara-sayfasi-container {
+    max-width: 1200px;
+    margin: 15px auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fuar-navbar{
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    min-height: 300px; /* Minimum yükseklik belirler */
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-image: url('img/gri.webp'); /* Arka plan resmi ekler */
+    background-size: cover; /* Arka plan resmini kapsayacak şekilde boyutlandırır */
+    background-position: center; /* Arka plan resmini ortalar */
+    filter: grayscale(100%); /* Tamamen siyah-beyaz yapar */
+}
+
+.fuar-navbar h1 {
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    left: 50%; /* Soldan %50 boşluk bırakır */
+    transform: translate(-50%, -50%); /* Konumlandırmayı tam ortalar */
+    color: rgb(255, 255, 255); /* Yazı rengini koyu gri yapar */
+    font-size: 48px; /* Yazı boyutunu ayarlar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Metin gölgesi ekler */
+}
+
+.fuar-detay-container {
+    width: 80%;
+    max-width: 1200px; /* Maksimum genişliği artırarak iki sütunun daha fazla alan kaplamasını sağladık */
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fuar-baslik {
+    margin-bottom: 20px;
+}
+
+.fuar-baslik h1 {
+    font-size: 34px;
+    color: #333;
+    margin: 0;
+}
+
+.fuar-tarih {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.fuar-icerik {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.fuar-aciklama {
+    font-size: 16px;
+    color: #4d4c4c;
+    max-width: 600px;
+}
+
+.fuar-aciklama p{
+    font-size: 20px;
+}
+
+
+.fuar-slideshow {
+    flex: 1;
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* Önceki ve sonraki butonlar */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Referanslar sayfası için stiller  */
+.img-ref-navbar{
+    position: relative; /* Konumlandırma için relative kullanır */
+    width: 100%; /* Genişliği tam yapar */
+    min-height: 300px; /* Minimum yükseklik belirler */
+    padding: 50px 0; /* Üst ve alt boşluk ekler */
+    background-image: url('img/gri.webp'); /* Arka plan resmi ekler */
+    background-size: cover; /* Arka plan resmini kapsayacak şekilde boyutlandırır */
+    background-position: center; /* Arka plan resmini ortalar */
+    filter: grayscale(100%); /* Tamamen siyah-beyaz yapar */
+}
+
+.img-ref-navbar h4 {
+    position: absolute; /* Mutlak konumlandırma kullanır */
+    top: 50%; /* Üstten %50 boşluk bırakır */
+    left: 50%; /* Soldan %50 boşluk bırakır */
+    transform: translate(-50%, -50%); /* Konumlandırmayı tam ortalar */
+    color: rgb(255, 255, 255); /* Yazı rengini koyu gri yapar */
+    font-size: 48px; /* Yazı boyutunu ayarlar */
+    font-weight: bold; /* Yazı kalınlığını artırır */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Metin gölgesi ekler */
+}
+.reference-cards {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Kartlar arasındaki boşluk */
+    flex-wrap: wrap; /* Ekran daraldığında kartların alt alta geçmesini sağlar */
+}
+
+.reference-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    width: 500px; /* Kart genişliği */
+    height: 300px; /* Kart yüksekliği */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Dikey ortalama */
+    align-items: center; /* Yatay ortalama */
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    
+}
+
+.reference-item:hover {
+    transform: scale(1.05); /* Hover efekti */
+}
+
+.reference-item img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.reference-item p {
+    font-size: 18px;
+    color: #555;
+    position: absolute;
+    margin-bottom:-300px;
+}
+
+
+.footer {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    flex-direction: row; /* İçindeki elemanları yatayda hizalar */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    text-align: center; /* Metni ortalar */
+    justify-content: center; /* İçindeki elemanları yatayda ortalar */
+    background-color: #333; /* Arka plan rengini koyu gri yapar */
+    color: white; /* Yazı rengini beyaz yapar */
+    padding: 20px; /* İç boşluk ekler */
+    flex-wrap: wrap; /* İçeriği sarar */
+}
+
+.footer-section {
+    flex: 1; /* Esnek genişlik ayarı */
+    min-width: 300px; /* Minimum genişlik belirler */
+    padding: 10px; /* İç boşluk ekler */
+}
+
+.map iframe {
+    width: 100%; /* Genişliği tam yapar */
+    max-width: 300px; /* Maksimum genişlik belirler */
+    height: 200px; /* Sabit yükseklik belirler */
+}
+
+.info-item .icon {
+    color: #8fc537; /* İkon rengini kırmızı yapar */
+    font-size: 20px; /* İkon boyutunu ayarlar */
+    margin-right: 10px; /* Sağ tarafa boşluk ekler */
+}
+
+.info-item p {
+    display: inline; /* Metni ikonla aynı satırda tutar */
+}
+
+.contact-info {
+    color: white; /* Yazı rengini beyaz yapar */
+}
+
+.contact-form {
+    width: 33.3%; /* Genişliği yüzde 33.3 yapar */
+    margin: 0 auto; /* Ortalar */
+}
+
+.form-row {
+    display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+    justify-content: center; /* İçindeki elemanları yatayda ortalar */
+    align-items: center; /* İçindeki elemanları dikeyde ortalar */
+    margin-bottom: 10px; /* Alt boşluk ekler */
+}
+
+.form-row.double-input {
+    justify-content: center; /* İçindeki elemanları yatayda ortalar */
+}
+
+.form-row.double-input input {
+    width: calc(34% - 5px); /* Genişliği yüzde 33 ve 5px boşluk yapar */
+    max-width: 150px; /* Maksimum genişlik belirler */
+    padding: 5px; /* İç boşluk ekler */
+    margin-bottom: 1px; /* Alt boşluk ekler */
+    border: 2px solid #ccc; /* Gri sınır ekler */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    box-sizing: border-box; /* Padding ve border dahil genişliği hesaplar */
+    font-size: 14px; /* Yazı boyutunu ayarlar */
+}
+
+.form-row.double-input input:last-child {
+    margin-right: 0; /* Son input elemanının sağında boşluk bırakmaz */
+}
+
+.contact-form input:not(.double-input input),
+.contact-form textarea,
+.contact-form button {
+    width: 80%; /* Genişliği yüzde 80 yapar */
+    max-width: 300px; /* Maksimum genişlik belirler */
+    padding: 5px; /* İç boşluk ekler */
+    margin-bottom: 1px; /* Alt boşluk ekler */
+    border: 2px solid #ccc; /* Gri sınır ekler */
+    border-radius: 5px; /* Köşeleri yuvarlatır */
+    box-sizing: border-box; /* Padding ve border dahil genişliği hesaplar */
+    font-size: 14px; /* Yazı boyutunu ayarlar */
+}
+
+.contact-form textarea {
+    height: 100px; /* Sabit yükseklik belirler */
+}
+
+.contact-form button {
+    background-color: #8fc537; /* Arka plan rengini kırmızı yapar */
+    color: white; /* Yazı rengini beyaz yapar */
+    border: none; /* Kenarlık eklemez */
+    cursor: pointer; /* İşaretçiyi el işareti yapar */
+    transition: background-color 0.3s; /* Arka plan rengi için geçiş süresi ekler */
+}
+
+.contact-form button:hover {
+    background-color: #c50303; /* Hover durumunda arka plan rengini koyulaştırır */
+}
+
+.social-icons a {
+    color: #8fc537; /* Yazı rengini kırmızı yapar */
+    margin-right: 10px; /* Sağ tarafa boşluk ekler */
+}
+
+.social-icons img {
+    width: 24px; /* Sabit genişlik belirler */
+    height: 24px; /* Sabit yükseklik belirler */
+}
+
+footer .copyright {
+    width: 100%; /* Genişliği tam yapar */
+    padding: 10px 0; /* Üst ve alt boşluk ekler */
+    background-color: #222; /* Arka plan rengini koyu gri yapar */
+    font-size: 14px; /* Yazı boyutunu ayarlar */
+    margin-top: auto; /* Diğer içeriklerden sonra bu öğeyi en alta yerleştirir */
+    border-top: 1px solid #444; /* Ayırıcı bir çizgi ekler */
+}
+
+/* Media Sorguları */
+@media (max-width: 1200px) { /* Küçük ekranlar için */
+    header .navbar ul li a{
+        font-size: 13px;
+        padding: 7px;
+    }
+    .col-md-4 {
+        width: 100%; /* Genişliği tam yapar */
+    }
+
+    .contact-form {
+        width: 80%; /* Genişliği yüzde 80 yapar */
+    }
+
+    .form-row.double-input input {
+        width: calc(40% - 5px); /* Genişliği yüzde 40 ve 5px boşluk yapar */
+    }
+  
+    .contact-section {
+        flex-direction: column; /* İletişim bölümünü dikey hizala */
+        padding: 20px; /* İç boşluğu azalt */
+    }
+
+    .contact-container, .contact-info {
+        flex: 1 1 100%; /* Her iki bölümü de tam genişlik yap */
+        margin: 10px 0; /* Üst ve alt boşluk ekle */
+        max-width: 100%; /* Maksimum genişliği sınırla */
+    }
+
+    .contact-container h1, .contact-info h2 {
+        font-size: 30px; /* Yazı boyutunu küçült */
+    }
+
+    .contact-container .form-row input, .contact-container .form-row textarea {
+        width: 100%; /* Genişliği tam yap */
+    }
+
+    .contact-container button {
+        width: 100%; /* Butonu tam genişlik yap */
+    }
+
+    .map-container {
+        padding: 20px; /* İç boşluğu azalt */
+    }
+
+    .map-container h2 {
+        font-size: 30px; /* Yazı boyutunu küçült */
+    }
+    
+   
+    .what-we-do-text .text-container {
+        flex-direction: column ; /* Metin öğelerini dikeyde hizalar */
+    }
+
+    .what-we-do-text .text-item {
+        flex: 1 1 40%; /* Metin öğelerinin genişliğini %100 yapar */
+        margin: 10px 0; /* Alt boşluk ekler */
+    }
+    .what-we-do-text .text-item p{
+        font-size: 12px;
+    }
+    .about-us-item {
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .about-us-item.reverse {
+        flex-direction: column;
+    }
+
+    .about-us-text, .about-us-image {
+        max-width: 100%;
+    }
+    .machine-item-slide-container {
+        flex-direction: column;
+        gap: 20px; /* Küçük ekranlarda daha büyük boşluk ekleyelim */
+    }
+
+    .machine-item {
+        flex: 0 0 100%;
+        padding: 10px 0; /* Üst ve alt boşluk ekleyelim */
+    }
+
+    .machine-item img {
+        max-width: 100%;
+        height: auto;
+    }
+  
+    
+}
+@media (max-width: 1024px) {
+    .gallery-image {
+        width: 100%; /* Görselin genişliğini eleman genişliği ile sınırlar */
+        max-width: 500px;
+        max-height: 300px;
+        height: auto; /* Yüksekliği otomatik ayarlar, en-boy oranını korur */
+        border-radius: 5px; /* Görselin köşelerini 5px yuvarlatır */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif bir gölge efekti ekler */
+        transition: transform 0.2s; /* Görüntü ölçeklendirmesi için 0.2 saniyelik geçiş efekti ekler */
+        object-fit: cover;
+    }
+    .fuar-detay-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .fuar-icerik {
+        display: block;
+        width: 100%;
+      }
+    
+      .fuar-slideshow {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    
+      .fuar-aciklama {
+        width: 100%;
+      }
+    
+      .fuar-slideshow .slide {
+        width: 100%;
+        max-width: 100%;
+      }
+    
+      .fuar-navbar {
+        text-align: center;
+      }
+    
+    .form-row.double-input input {
+        width: calc(43% - 10px); /* Genişliği düzeltiyoruz */
+        margin-bottom: 2px; /* Alt boşluk ekliyoruz */
+    }
+    
+    .contact-section {
+        flex-direction: row; /* Bölümü dikey hizalıyoruz */
+    }
+
+    .contact-container, .contact-info {
+        max-width: 45%; /* Genişliği %100 yapıyoruz */
+        margin: 0 auto; /* Ortalıyoruz */
+        
+    }
+
+    .contact-container h1, .contact-info h2 {
+        font-size: 28px; /* Yazı boyutunu küçültüyoruz */
+    }
+    
+}
+
+@media (max-width: 960px) {
+    
+    .what-we-do-text .text-container{
+        flex-direction: row;
+        display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+        flex-wrap: wrap; /* İçeriği sarar */
+    }
+    .reference-item{
+        width: 300px; /* Kart genişliği */
+        height: 200px; /* Kart yüksekliği */
+    }
+    .reference-item img {
+        width: 200px; /* Logo boyutu */
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .mySlides img {
+        display: block;
+        margin: auto;
+        width: 70%;
+        height: auto;
+        object-fit: cover;
+    }
+    .search-language {
+        display: none; /* Görünürlüğü kapatır */
+    }
+    header .navbar {
+        all: unset; /* Tüm CSS özelliklerini sıfırlar */
+    }
+
+    header .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 40%;
+        height: 100%;
+        background-color: #333;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding-top: -100px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+
+    /* Menü aktif olduğunda ekranın sağından kayar */
+    #menu-bar:checked ~ .navbar {
+        right: 0;
+    }
+
+    /* Hamburger menü butonu */
+    .menu-icon {
+        display: block;
+        position: fixed;
+        top: 35px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1100;
+        width: 35px;
+        height: 30px;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin-bottom: 6px;
+        background-color: #8fc537; /* Kırmızı renk */
+        transition: all 0.3s ease;
+    }
+
+    /* Menü İkonu Tıklandığında X İkonuna Dönüşümü */
+    #menu-bar:checked + .menu-icon span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    #menu-bar:checked + .menu-icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-bar:checked + .menu-icon span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* Menü Öğeleri Stili */
+    header .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 70px;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    header .navbar ul li {
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    header .navbar ul li a {
+        color: #ffffff; /* Beyaz renk */
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px;
+        display: block;
+    }
+
+    header .navbar .dropdown-content,  header .navbar .dropdown-content a {
+        all: unset; /* Tüm CSS özelliklerini sıfırlar */
+    }
+
+    /* Dropdown Menüsü Stili */
+    header .navbar .dropdown-content {
+        display: none;
+        flex-direction: column;
+        padding-left: 0px;
+        background-color: #333;
+    }
+
+    header .navbar .dropdown-content a{
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #444;
+        margin-bottom: 5px;
+    }
+    .dropdown-content a:hover {
+        background-color: #555;
+    }
+
+
+    .about-us-item {
+        margin: 0 auto; /* Ortalar */
+        padding: 0; /* İç boşlukları sıfırlar */
+        align-items: center; /* Elemanları ortalar */
+    }
+
+    .about-us-item.reverse {
+        flex-direction: column !important; /* Dikey hizalama */
+        text-align: center; /* Metni ortalar */
+    }
+
+    .about-us-text, .about-us-image {
+        max-width: 100%; /* Tam genişlik */
+        margin: 0 auto; /* Ortalar */
+        
+    }
+
+    .about-us-image {
+        margin-bottom: 20px; /* Alt boşluk */
+    }
+
+    .about-us-item.reverse .about-us-text {
+        margin-left: 0 !important; /* Soldaki boşlukları kaldırır */
+    }
+
+    .about-us-item.reverse .about-us-image {
+        margin-right: 0 !important; /* Sağdaki boşlukları kaldırır */
+    }
+
+    .machine-slideshow-container {
+        position: relative; /* Konumlandırma için relative kullanır */
+        width: 80%; /* Maksimum genişlik belirler */
+        margin: auto; /* Ortalar */
+        display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+        flex-direction: column; /* İçindeki elemanları dikeyde sıralar */
+        align-items: center; /* İçindeki elemanları ortalar */
+        justify-content: center; /* İçindeki elemanları ortalar */
+    }
+
+    .machine-slide {
+        display: none; /* Görünürlüğü kapatır */
+        width: 100%; /* Genişliği tam yapar */
+        display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+        flex-direction: column; /* İçindeki elemanları dikeyde sıralar */
+        align-items: center; /* İçindeki elemanları dikeyde ortalar */
+        justify-content: center; /* İçindeki elemanları yatayda ortalar */
+        gap: 20px; /* Elemanlar arasındaki boşluğu artırır */
+    }
+    .slide-image{
+        width: 100%;
+    }
+    
+    .service-policy .policy-item h4 {
+        font-size: 10px; /* Yazı boyutunu büyük yapar */
+    }
+
+    .service-policy .policy-item p {
+        font-size: 8px; /* Yazı boyutunu ayarlar */
+    }
+    .contact-container, .contact-info {
+        flex: 1 1 30%; /* Esnek genişlik ayarı */
+        margin: 10px; /* Dış boşluk ekler */
+    }
+    .what-we-do-container {
+        flex-direction: column; /* Ekran 768px'den küçük olduğunda elemanları dikeyde hizalar */
+    }
+
+    .what-we-do-slideshow,
+    .what-we-do-text {
+        max-width: 100%; /* Her iki elemanın genişliğini %100 yapar */
+    }
+
+    .what-we-do-text .text-container {
+        flex-direction: column ; /* Metin öğelerini dikeyde hizalar */
+    }
+
+    .what-we-do-text .text-item {
+        flex: 1 1 100%; /* Metin öğelerinin genişliğini %100 yapar */
+        margin: 10px 0; /* Alt boşluk ekler */
+    }
+    .about-us-item {
+        flex-direction: column;
+        width: 70%;
+    }
+
+}
+@media (max-width: 600px) {
+    .reference-item {
+        width: 100%; /* Küçük ekranlarda tam genişlik */
+        max-width: 350px;
+    }
+    .reference-cards {
+        flex-direction: column; /* Çok küçük ekranlarda kartları alt alta getir */
+        align-items: center;
+    }
+    .gallery-image {
+        width: 100%; /* Görselin genişliğini eleman genişliği ile sınırlar */
+        max-width: 300px;
+        max-height: 400px;
+        height: auto; /* Yüksekliği otomatik ayarlar, en-boy oranını korur */
+        border-radius: 5px; /* Görselin köşelerini 5px yuvarlatır */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif bir gölge efekti ekler */
+        transition: transform 0.2s; /* Görüntü ölçeklendirmesi için 0.2 saniyelik geçiş efekti ekler */
+        object-fit: cover;
+    }
+    .gallery-row {
+        display: flex; /* İçindeki elemanları esnek kutu modeli ile düzenler */
+        flex-wrap: wrap; /* İçeriği sarar ve alt satıra geçmesini sağlar */
+    }
+    
+    .gallery-item {
+        flex: 1 1 calc(503% - 20px); /* Her bir galeri öğesi için genişliği 33.333% yapar ve 20px boşluk bırakır */
+        margin: 10px; /* Her bir öğe etrafında 10px boşluk bırakır */
+    }
+    .footer {
+        padding: 10px; /* İç boşluğu azalt */
+        font-size: 12px; /* Yazı boyutunu küçült */
+    }
+    .service-policy .policy-item h4 {
+        font-size: 8px; /* Yazı boyutunu büyük yapar */
+    }
+
+    .service-policy .policy-item p {
+        font-size: 5px; /* Yazı boyutunu ayarlar */
+    }
+
+    .machine-slideshow-container {
+        display: flex;
+        flex-direction: column; /* Öğeleri alt alta sıralar */
+        align-items: center; /* Öğeleri yatayda ortalar */
+        width: 100%; /* Genişliği tam yapar */
+    }
+    
+    .machine-slide {
+        display: flex;
+        flex-direction: column; /* Resim ve metni dikey hizalar */
+        align-items: center;
+        width: 100%; /* Her öğeyi tam genişlik yapar */
+        margin-bottom: 20px; /* Öğeler arasında boşluk bırakır */
+    }
+    
+    .slide-image {
+        width: 100%; /* Resim genişliğini tam yapar */
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 10px; /* Resim ile metin arasında boşluk bırakır */
+    }
+    
+    .contact-section {
+        flex-direction: column; /* Bölümü dikey hizala */
+        padding: 20px; /* İç boşluğu azalt */
+    }
+
+    .contact-container, .contact-info {
+        width: 100%; /* Her iki bölümü de tam genişlik yap */
+        margin-bottom: 20px; /* Alt boşluk ekle */
+        padding: 10px; /* İç boşluk ekle */
+        max-width: 100%; /* Maksimum genişliği kaldır */
+    }
+    .map-container {
+        padding: 15px; /* İç boşluğu azalt */
+        margin-bottom: 10px; /* Alt boşluğu azalt */
+    }
+
+    .map-container h2 {
+        font-size: 24px; /* Başlık yazı boyutunu küçült */
+    }
+    .form-row.double-input input {
+        width: calc(43.5% - 10px); /* Genişliği düzeltiyoruz */
+        margin-bottom: 2px; /* Alt boşluk ekliyoruz */
+    }
+
+    video {
+        width: 100%; /* Genişliği tam yapar */
+        height: 70%; /* Yüksekliği tam yapar */
+        object-fit: cover; /* Video içeriğini kapsayacak şekilde boyutlandırır */
+    }
+   
+    
+}
+
+/* Masaüstü cihazlar için dropdown menüsünü göster */
+@media (min-width: 1700px) { /* Büyük ekranlar için */
+    header .navbar .dropdown-content {
+        display: none; /* Görünürlüğü kapatır */
+        position: absolute; /* Mutlak konumlandırma kullanır */
+        left: 50%; /* Soldan %50 boşluk bırakır */
+        transform: translateX(-50%); /* X ekseninde -%50 kaydırır */
+        top: 100%; /* Üstten boşluk bırakır */
+        background-color: #dcdcdc; /* Arka plan rengini açık gri yapar */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Gölge efekti ekler */
+        z-index: 1000; /* Z-indeks sıralamasında öne çıkarır */
+        width: 80vw; /* Genişliği %80 ekran genişliği yapar */
+        max-width: 1200px; /* Maksimum genişlik belirler */
+        border-top: none; /* Üst sınır eklemez */
+        padding: 20px; /* İçeriklerin etrafında boşluk bırakır */
+        display: flex; /* Flexbox düzeni kullanır */
+        flex-wrap: wrap; /* İçeriği sarar */
+        justify-content: flex-start; /* İçeriği yatayda aralarına boşluk koyarak hizalar */
+        align-items: flex-start; /* İçeriği üstten hizalar */
+    }
+
+    header .navbar .dropdown:hover .dropdown-content {
+        display: flex; /* Hover durumunda görünürlüğü açar */
+    }
+
+    .dropdown-content a {
+        color: #000000; /* Yazı rengini siyah yapar */
+        padding: 10px; /* İç boşluk ekler */
+        text-decoration: none; /* Altı çizili özelliği kaldırır */
+        display: flex; /* Flexbox düzeni kullanır */
+        align-items: flex-start; /* İçeriği dikeyde ortalar */
+        justify-content: flex-start; /* İçeriği yatayda ortalar */
+        transition: 0.3s; /* Geçiş süresi ekler */
+        text-align: left; /* Metni ortalar */
+        width: calc(33.333% - 20px); /* Genişliği üçe böler ve aralarında boşluk bırakır */
+        margin: 10px; /* Dış boşluk ekler */
+        flex-direction: column; /* Elemanları dikeyde hizalar */
+    }
+
+    .dropdown-content a img {
+        width: 60px; /* Resim genişliği */
+        height: auto; /* Resim yüksekliği */
+        margin-bottom: 5px; /* Alt tarafa boşluk ekler */
+        align-items: flex-start;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #65656597; /* Hover durumunda arka plan rengini değiştirir */
+    }
+  
+}
+@media (max-width:1500px) {
+    .form-row.double-input input {
+        width: calc(50% - 5px); /* Genişliği yüzde 40 ve 5px boşluk yapar */
+    }
+}
+@media (max-width:380px) {
+    .form-row.double-input input {
+        width: calc(42% - 5px); /* Genişliği yüzde 40 ve 5px boşluk yapar */
+    }
+}
